@@ -1,0 +1,26 @@
+[
+    {
+        "img": "../assets/images/ledstar-nano.jpg",
+        "alt": "C Series akvariebelysning",
+        "name": "C Series",
+        "button": "Till produkten"
+    },
+    {
+        "img": "../assets/images/ledstar-nano.jpg",
+        "alt": "J Series akvariebelysning",
+        "name": "J Series",
+        "button": "Till produkten"
+    },
+    {
+        "img": "../assets/images/ledstar-nano.jpg",
+        "alt": "WS Series akvariebelysning",
+        "name": "WS Series",
+        "button": "Till produkten"
+    },
+    {
+        "img": "../assets/images/ledstar-nano.jpg",
+        "alt": "Nano Series akvariebelysning",
+        "name": "Nano Series",
+        "button": "Till produkten"
+    }
+]
