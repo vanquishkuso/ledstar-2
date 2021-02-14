@@ -5,7 +5,7 @@ import Products from "../components/Products"
 import SEO from "../components/seo"
 
 // https://www.youtube.com/watch?v=smHhNzM5Uo4
-// 59:10
+// 1:45
 
 const IndexPage = () => (
   <Layout>
