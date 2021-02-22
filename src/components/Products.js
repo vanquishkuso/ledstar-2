@@ -6,19 +6,19 @@ import { Button } from './Button'
 import { ImLocation } from 'react-icons/im'
 
 
-const Products = () => {
+const Products = ({ heading }) => {
     const data = useStaticQuery(graphql`
-    query ProductsQuery {
-        allProductsJson {
-            edges {
-                node {
+        query ProductsQuery {
+            allProductsJson {
+                edges {
+                 node {
                     alt
                     button
                     name
                     img {
-                        childImageSharp {
-                            fluid(maxWidth: 10000, quality: 100) {
-                                ...GatsbyImageSharpFluid
+                         childImageSharp {
+                                fluid {
+                                   ...GatsbyImageSharpFluid
                             }
                         }
                     }
@@ -33,14 +33,21 @@ const Products = () => {
         data.allProductsJson.edges.forEach((item, index) => {
             productsArray.push(
                 <ProductCard key={index}>
-                    <ProductImg src={item.node.img.childImageSharp.fluid.src} alt={item.node.alt} fluid={item.node.img.childImageSharp.fluid}
+                    <ProductImg
+                        src={item.node.img.childImageSharp.fluid.src}
+                        alt={item.node.alt}
+                        fluid={item.node.img.childImageSharp.fluid}
                     />
                     <ProductInfo>
                         <TextWrap>
                             <ImLocation />
                             <ProductTitle>{item.node.name}</ProductTitle>
                         </TextWrap>
-                        <Button to="/products">{item.node.button}</Button>
+                        <Button to="/products" primary="true" round="true" css={`
+                        position: absolute;
+                        top: 420px;
+                        font-size: 14px;
+                        `}>{item.node.button}</Button>
                     </ProductInfo>
                 </ProductCard>
             )
@@ -50,7 +57,7 @@ const Products = () => {
 
     return (
         <ProductsContainer>
-            <ProductsHeading>Heading</ProductsHeading>
+            <ProductsHeading>{heading}</ProductsHeading>
             <ProductWrapper>{getProducts(data)}</ProductWrapper>
         </ProductsContainer>
     )
@@ -61,14 +68,14 @@ export default Products
 const ProductsContainer = styled.div`
     min-height: 100vh;
     padding: 5rem calc((100vw - 1300px) / 2);
-    background: grey;
     color: #fff;
 `
 const ProductsHeading = styled.div`
     font-size: clamp(1.2rem, 5vw, 3rem);
-    text-align: center;'
+    text-align: center;
     margin-bottom: 5rem;
     color: #000;
+    font-weight: 30;
 `
 
 const ProductWrapper = styled.div`
@@ -102,7 +109,7 @@ const ProductImg = styled(Img)`
     position: relative;
     border-radius: 10px;
     filter: brightness(70%);
-    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
     &:hover {
         filter: brightness(100%)
@@ -119,9 +126,14 @@ const ProductInfo = styled.div`
     }
 `
 const TextWrap = styled.div`
-
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 375px;
 `
 const ProductTitle = styled.div`
-
+    font-weight: 400;
+    font-size: 1rem;
+    margin-left: 0.5rem;
 `
 
