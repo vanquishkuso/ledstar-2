@@ -79,7 +79,7 @@ const ImgBg = styled.img`
 
 const HeroContent = styled.div`
     z-index: 3;
-    heighjt: calc(100vh - 80px);
+    height: calc(100vh - 80px);
     max-height: 100%;
     padding: 0rem calc((100vw - 1300px) / 2);
 `
